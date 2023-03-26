@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My News App</title>
+    <meta http-equiv="refresh" content="5">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+</head>
+<body>
+<h1>Latest News</h1>
+{% for _, row in news.tail(1).iterrows() %}
+<h2>{{ row['title'] }} - {{ row['publishedAt'] }}</h2>
+{{ row['image_html'] | safe }}
+<p>{{ row['description'] }}</p>
+{% endfor %}
+
+<hr>
+
+<h2>Other News</h2>
+{% for _, row in news.head(n=5).iloc[::-1].iterrows() %}
+<h3>{{ row['title'] }} - {{ row['publishedAt'] }}</h3>
+{{ row['image_html'] | safe }}
+<p>{{ row['description'] }}</p>
+{% endfor %}
+</body>
+</html>
