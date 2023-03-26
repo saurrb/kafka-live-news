@@ -10,7 +10,7 @@ producer = KafkaProducer(
     bootstrap_servers=kafka_bootstrap_servers,
     value_serializer=lambda v: json.dumps(v).encode('utf-8'))
 
-api_key = '309c668f769743adba1a0494f7d0451a'
+api_key = ''
 url = f'https://newsapi.org/v2/top-headlines?country=in&apiKey={api_key}'
 
 while True:
